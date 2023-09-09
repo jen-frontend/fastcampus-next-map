@@ -2,6 +2,17 @@
 
 import type { InferGetStaticPropsType, GetStaticProps } from "next";
 
+export default function Page({
+  number,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
+  return (
+    <div>
+      <h1>getStaticProps</h1>
+      <h2>number: {number}</h2>
+    </div>
+  );
+}
+
 export const getStaticProps: GetStaticProps<{
   number: number;
 }> = async () => {
@@ -11,9 +22,3 @@ export const getStaticProps: GetStaticProps<{
   const number = await num.json();
   return { props: { number } };
 };
-
-export default function Page({
-  number,
-}: InferGetStaticPropsType<typeof getStaticProps>) {
-  return number;
-}

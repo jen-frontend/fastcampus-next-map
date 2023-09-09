@@ -1,3 +1,5 @@
+// https://nextjs.org/docs/pages/building-your-application/data-fetching/get-server-side-props
+
 import type { InferGetServerSidePropsType, GetServerSideProps } from "next";
 
 export const getServerSideProps: GetServerSideProps<{
@@ -13,5 +15,10 @@ export const getServerSideProps: GetServerSideProps<{
 export default function Page({
   number,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
-  return number;
+  return (
+    <div>
+      <h1>getServerSideProps</h1>
+      <h2>Number: {number}</h2>
+    </div>
+  );
 }
