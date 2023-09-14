@@ -22,7 +22,7 @@ export default function Navbar() {
           <Link href="/users/likes" className="navbar__list--item">
             찜한 가게
           </Link>
-          <Link href="/users/login" className="navbar__list--item">
+          <Link href="/api/auth/signin" className="navbar__list--item">
             로그인
           </Link>
         </div>
@@ -48,7 +48,10 @@ export default function Navbar() {
             <Link href="/users/likes" className="navbar__list--item--mobile">
               찜한 가게
             </Link>
-            <Link href="/users/login" className="navbar__list--item--mobile">
+            <Link
+              href="/api/auth/signin"
+              className="navbar__list--item--mobile"
+            >
               로그인
             </Link>
           </div>
