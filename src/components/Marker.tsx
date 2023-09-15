@@ -1,5 +1,5 @@
 import { StoreType } from "@/interface";
-import { Dispatch, SetStateAction, useEffect } from "react";
+import { useEffect } from "react";
 
 interface MarkerProps {
   map: any;
@@ -36,7 +36,7 @@ export default function Marker({ map, store }: MarkerProps) {
       marker.setMap(map);
 
       // 마커에 커서가 오버됐을 때 마커 위에 표시할 인포윈도우를 생성합니다
-      let content = `<div class="info__title">${store?.name}</div>`; // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+      let content = `<div class="infowindow">${store?.name}</div>`; // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
 
       // 커스텀 오버레이를 생성합니다
       let customOverlay = new window.kakao.maps.CustomOverlay({
