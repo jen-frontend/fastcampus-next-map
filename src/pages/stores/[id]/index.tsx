@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import { useRouter } from "next/router";
 import { useQuery } from "react-query";
 import axios from "axios";
@@ -5,7 +7,6 @@ import { StoreType } from "@/interface";
 import Loader from "@/components/Loader";
 import Map from "@/components/Map";
 import Marker from "@/components/Marker";
-import { useState } from "react";
 
 export default function StorePage() {
   const [map, setMap] = useState(null);
