@@ -41,8 +41,6 @@ export const CATEGORY_ARR = [
   "복어취급",
 ];
 
-export const STORE_TYPE_ARR = ["일반음식점", "휴게음식점", "제과점영업"];
-
 export const FOOD_CERTIFY_ARR = [
   "채식가능음식점",
   "채식음식점",
@@ -51,3 +49,5 @@ export const FOOD_CERTIFY_ARR = [
   "농부시장",
   "친환경유기농식품판매점",
 ];
+
+export const STORE_TYPE_ARR = ["일반음식점", "휴게음식점", "제과점영업"];

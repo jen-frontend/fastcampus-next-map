@@ -14,8 +14,8 @@ export default async function handler(
   res: NextApiResponse<StoreApiResponse | StoreType[] | StoreType>
 ) {
   const { page = "", limit = "", q, district }: Responsetype = req.query;
-
   if (req.method === "POST") {
+    // 데이터 생성을 처리한다
     const data = req.body;
     const result = await prisma.store.create({
       data: { ...data },
@@ -23,6 +23,7 @@ export default async function handler(
 
     return res.status(200).json(result);
   } else {
+    // GET 요청 처리
     if (page) {
       const count = await prisma.store.count();
       const skipPage = parseInt(page) - 1;
