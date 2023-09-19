@@ -75,9 +75,9 @@ export default function StorePage() {
               {store?.address}
             </p>
           </div>
-          {status === "authenticated" && (
+          {status === "authenticated" && store && (
             <div className="flex items-center gap-4 px-4 py-3">
-              {store && <Like storeId={store.id} />}
+              {<Like storeId={store.id} />}
               <Link
                 className="underline hover:text-gray-400 text-sm"
                 href={`/stores/${store?.id}/edit`}

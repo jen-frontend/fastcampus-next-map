@@ -36,9 +36,9 @@ model Store {
 
 model Like {
   id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
   storeId   Int
   userId    Int
-  createdAt DateTime @default(now())
   store     Store    @relation(fields: [storeId], references: [id], onDelete: Cascade)
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   @@index([userId, storeId])
