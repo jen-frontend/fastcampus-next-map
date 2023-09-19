@@ -34,7 +34,6 @@ export default function Like({ storeId }: LikeProps) {
         const like = await axios.post("/api/likes", {
           storeId: store.id,
         });
-        console.log(like);
 
         if (like.status === 201) {
           toast.success("가게를 찜했습니다.");
