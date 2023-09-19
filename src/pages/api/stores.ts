@@ -34,6 +34,26 @@ export default async function handler(
     });
 
     return res.status(200).json(result);
+  } else if (req.method === "PUT") {
+    // 데이터 수정을 처리한다
+    const formData = req.body;
+    const headers = {
+      Authorization: `KakaoAK ${process.env.KAKAO_CLIENT_ID}`,
+    };
+
+    const { data } = await axios.get(
+      `https://dapi.kakao.com/v2/local/search/address.json?query=${encodeURI(
+        formData.address
+      )}`,
+      { headers }
+    );
+
+    const result = await prisma.store.update({
+      where: { id: formData.id },
+      data: { ...formData, lat: data.documents[0].y, lng: data.documents[0].x },
+    });
+
+    return res.status(200).json(result);
   } else {
     // GET 요청 처리
     if (page) {
