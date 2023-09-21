@@ -2,10 +2,15 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import { getServerSession } from "next-auth";
 import { authOptions } from "./auth/[...nextauth]";
 import prisma from "@/db";
+import { LikeInterface, LikeApiResponse } from "@/interface";
+interface ResponseType {
+  page?: string;
+  limit?: string;
+}
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse
+  res: NextApiResponse<LikeInterface | LikeApiResponse>
 ) {
   const session = await getServerSession(req, res, authOptions);
 
@@ -45,5 +50,33 @@ export default async function handler(
 
       return res.status(201).json(like);
     }
+  } else {
+    // GET 요청 처리
+    const count = await prisma.like.count({
+      where: {
+        userId: session.user.id,
+      },
+    });
+
+    const { page = "1", limit = "10" }: ResponseType = req.query;
+    const skipPage = parseInt(page) - 1;
+
+    const likes = await prisma.like.findMany({
+      orderBy: { createdAt: "desc" },
+      where: {
+        userId: session.user.id,
+      },
+      include: {
+        store: true,
+      },
+      skip: skipPage * parseInt(limit),
+      take: parseInt(limit),
+    });
+
+    return res.status(200).json({
+      data: likes,
+      page: parseInt(page),
+      totalPage: Math.ceil(count / parseInt(limit)),
+    });
   }
 }
