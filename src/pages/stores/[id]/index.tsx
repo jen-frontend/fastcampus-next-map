@@ -10,6 +10,7 @@ import { toast } from "react-toastify";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import Like from "@/components/Like";
+import Comments from "@/components/comments";
 
 export default function StorePage() {
   const router = useRouter();
@@ -157,10 +158,13 @@ export default function StorePage() {
         </div>
       </div>
       {isSuccess && (
-        <div className="overflow-hidden w-full mb-20 max-w-5xl mx-auto max-h-[600px]">
-          <Map lat={store?.lat} lng={store?.lng} zoom={1} />
-          <Marker store={store} />
-        </div>
+        <>
+          <div className="overflow-hidden w-full mb-20 max-w-5xl mx-auto max-h-[600px]">
+            <Map lat={store?.lat} lng={store?.lng} zoom={1} />
+            <Marker store={store} />
+          </div>
+          <Comments storeId={store.id} />
+        </>
       )}
     </>
   );

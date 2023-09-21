@@ -19,6 +19,7 @@ model User {
   accounts      Account[]
   sessions      Session[]
   likes         Like[]
+  comments      Comment[]
 }
 
 model Store {
@@ -32,6 +33,7 @@ model Store {
   storeType String?  // cob_code_nm
   foodCertifyName String? // crtfc_gbn_nm
   likes         Like[]
+  comments      Comment[]
 }
 
 model Like {
@@ -39,6 +41,17 @@ model Like {
   createdAt DateTime @default(now())
   storeId   Int
   userId    Int
+  store     Store    @relation(fields: [storeId], references: [id], onDelete: Cascade)
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  @@index([userId, storeId])
+}
+
+model Comment {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  storeId   Int
+  userId    Int
+  body      String
   store     Store    @relation(fields: [storeId], references: [id], onDelete: Cascade)
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   @@index([userId, storeId])
