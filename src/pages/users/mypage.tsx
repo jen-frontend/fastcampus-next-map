@@ -1,11 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
 import { useSession, signOut } from "next-auth/react";
 
-export default function Mypage() {
+export default function Example() {
   const { data: session } = useSession();
-
   return (
-    <div className="md:max-w-5xl px-4 mx-auto py-8">
+    <div className="md:max-w-5xl mx-auto px-4 py-8">
       <div className="px-4 sm:px-0">
         <h3 className="text-base font-semibold leading-7 text-gray-900">
           마이페이지
@@ -38,11 +37,11 @@ export default function Mypage() {
             </dt>
             <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
               <img
+                alt="프로필 이미지"
                 width={48}
                 height={48}
                 className="rounded-full"
-                alt="프로필 이미지"
-                src={session?.user.image ?? "/images/markers/default.png"}
+                src={session?.user.image || "/images/markers/default.png"}
               />
             </dd>
           </div>
@@ -53,7 +52,7 @@ export default function Mypage() {
             <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
               <button
                 type="button"
-                className="underline"
+                className="underline hover:text-gray-500"
                 onClick={() => signOut()}
               >
                 로그아웃
