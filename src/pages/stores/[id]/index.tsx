@@ -9,6 +9,7 @@ import { toast } from "react-toastify";
 
 import { useSession } from "next-auth/react";
 import Link from "next/link";
+import Like from "@/components/Like";
 
 export default function StorePage() {
   const router = useRouter();
@@ -25,7 +26,7 @@ export default function StorePage() {
     isFetching,
     isSuccess,
     isError,
-  } = useQuery(`store-${id}`, fetchStore, {
+  } = useQuery<StoreType>(`store-${id}`, fetchStore, {
     enabled: !!id,
     refetchOnWindowFocus: false,
   });
@@ -74,8 +75,9 @@ export default function StorePage() {
               {store?.address}
             </p>
           </div>
-          {status === "authenticated" && (
+          {status === "authenticated" && store && (
             <div className="flex items-center gap-4 px-4 py-3">
+              {<Like storeId={store.id} />}
               <Link
                 className="underline hover:text-gray-400 text-sm"
                 href={`/stores/${store?.id}/edit`}
