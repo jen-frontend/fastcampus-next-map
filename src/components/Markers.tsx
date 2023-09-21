@@ -4,7 +4,7 @@ import { useEffect, useCallback, Dispatch, SetStateAction } from "react";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 
 interface MarkerProps {
-  stores: StoreType[];
+  stores?: StoreType[];
 }
 
 export default function Markers({ stores }: MarkerProps) {
