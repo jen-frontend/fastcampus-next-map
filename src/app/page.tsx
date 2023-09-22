@@ -1,15 +1,13 @@
-import { useState } from "react";
-
 import Map from "@/components/Map";
 import Markers from "@/components/Markers";
 
 import StoreBox from "@/components/StoreBox";
 import { StoreType } from "@/interface";
 
-import axios from "axios";
 import CurrentLocationButton from "@/components/CurrentLocationButton";
 
-export default function Home({ stores }: { stores: StoreType[] }) {
+export default async function Home() {
+  const stores: StoreType[] = await getData();
   return (
     <>
       <Map />
@@ -20,10 +18,14 @@ export default function Home({ stores }: { stores: StoreType[] }) {
   );
 }
 
-export async function getServerSideProps() {
-  const stores = await axios(`${process.env.NEXT_PUBLIC_API_URL}/api/stores`);
+async function getData() {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/stores`, {
+    cache: "no-store",
+  });
 
-  return {
-    props: { stores: stores.data },
-  };
+  if (!res.ok) {
+    throw new Error("Failed to fetch data");
+  }
+
+  return res.json();
 }

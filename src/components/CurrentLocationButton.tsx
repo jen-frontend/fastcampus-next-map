@@ -1,3 +1,5 @@
+"use client";
+
 import { mapState } from "@/atom";
 import { useState } from "react";
 import { MdOutlineMyLocation } from "react-icons/md";
