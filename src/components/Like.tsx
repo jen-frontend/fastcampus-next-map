@@ -46,7 +46,7 @@ export default function Like({ storeId }: LikeProps) {
           action: "click_like",
           category: "like",
           label: like.status === 201 ? "create_like" : "delete_like",
-          value: store.id,
+          value: storeId,
         });
 
         refetch();
@@ -59,7 +59,7 @@ export default function Like({ storeId }: LikeProps) {
         action: "click_like",
         category: "like",
         label: "need_login_like",
-        value: 0,
+        value: storeId,
       });
     }
   };
