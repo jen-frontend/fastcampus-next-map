@@ -19,8 +19,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <GoogleAnalytics GA_TRACKING_ID={process.env.NEXT_PUBLIC_GA_ID} />
       <body>
+        <GoogleAnalytics GA_TRACKING_ID={process.env.NEXT_PUBLIC_GA_ID} />
         <NextProvider>
           <NextLayout>{children}</NextLayout>
         </NextProvider>
