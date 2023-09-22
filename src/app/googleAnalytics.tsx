@@ -10,12 +10,12 @@ const GoogleAnalytics = ({ GA_TRACKING_ID }: { GA_TRACKING_ID?: string }) => {
   const searchParams = useSearchParams();
 
   useEffect(() => {
-    if (pathname && process.env.NODE_ENV === "production") {
+    if (pathname && process.env.NODE_ENV !== "development") {
       pageview(pathname + searchParams);
     }
   }, [pathname, searchParams]);
 
-  if (process.env.NODE_ENV !== "production") {
+  if (process.env.NODE_ENV === "development") {
     return null;
   }
 
