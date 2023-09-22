@@ -5,8 +5,8 @@ import Pagination from "@/components/Pagination";
 import CommentList from "@/components/comments/CommentList";
 import { CommentApiResponse } from "@/interface";
 import axios from "axios";
-import { useSession, signOut } from "next-auth/react";
 import { useSearchParams } from "next/navigation";
+import { useSession, signOut } from "next-auth/react";
 import { useQuery } from "react-query";
 
 export default function Mypage() {
@@ -102,5 +102,3 @@ export default function Mypage() {
     </div>
   );
 }
-
-export const dynamic = "force-dynamic";

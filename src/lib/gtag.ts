@@ -9,15 +9,15 @@ export const pageview = (url: URL | string) => {
   }
 };
 
-type GTagEvent = {
+type gtagEvent = {
   action: string;
   category: string;
   label: string;
-  value?: number;
+  value: number;
 };
 
 // https://developers.google.com/analytics/devguides/collection/gtagjs/events
-export const event = ({ action, category, label, value }: GTagEvent) => {
+export const event = ({ action, category, label, value }: gtagEvent) => {
   if (process.env.NODE_ENV !== "development") {
     window.gtag("event", action, {
       event_category: category,
