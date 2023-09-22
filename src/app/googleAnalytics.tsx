@@ -1,3 +1,5 @@
+"use client";
+
 import { GA_TRACKING_ID, pageview } from "@/lib/gtag";
 import Script from "next/script";
 import { useEffect } from "react";
