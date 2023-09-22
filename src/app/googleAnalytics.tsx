@@ -1,11 +1,11 @@
 "use client";
 
-import { GA_TRACKING_ID, pageview } from "@/lib/gtag";
+import { pageview } from "@/lib/gtag";
 import Script from "next/script";
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 
-function GoogleAnalytics() {
+function GoogleAnalytics({ GA_TRACKING_ID }: { GA_TRACKING_ID?: string }) {
   const pathname = usePathname();
 
   useEffect(() => {
@@ -19,7 +19,7 @@ function GoogleAnalytics() {
   }
 
   return (
-    <div className="container">
+    <>
       <Script
         strategy="afterInteractive"
         src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
@@ -33,7 +33,7 @@ function GoogleAnalytics() {
           gtag('config', '${GA_TRACKING_ID}');
         `}
       </Script>
-    </div>
+    </>
   );
 }
 
