@@ -1,6 +1,7 @@
 import "@/styles/globals.css";
 import { NextProvider, NextLayout } from "./providers";
 import { Metadata } from "next";
+import GoogleAnalytics from "./googleAnalytics";
 
 export const metadata: Metadata = {
   title: "Fastcampus NextMap",
@@ -18,6 +19,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <GoogleAnalytics />
       <body>
         <NextProvider>
           <NextLayout>{children}</NextLayout>
