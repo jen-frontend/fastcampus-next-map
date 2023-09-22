@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import Link from "next/link";
 import { useSession, signOut } from "next-auth/react";
@@ -7,7 +9,7 @@ import { AiOutlineClose } from "react-icons/ai";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const { data, status } = useSession();
+  const { status } = useSession();
 
   return (
     <>
