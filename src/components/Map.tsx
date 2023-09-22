@@ -1,3 +1,5 @@
+"use client";
+
 /*global kakao*/
 import Script from "next/script";
 import { useSetRecoilState, useRecoilValue } from "recoil";
