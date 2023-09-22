@@ -2,6 +2,7 @@
 
 - React, Next.js를 이용한 지도 맛집 프로젝트 입니다.
 - [Pull Request](https://github.com/jen-frontend/fastcampus-next-map/pulls?q=is%3Apr+is%3Aclosed) 탭에서 각 기능별 코드를 확인할 수 있습니다.
+- 사이트 바로가기: [https://fastcampus-next-map.vercel.app/](https://fastcampus-next-map.vercel.app/)
 
 <br />
 
