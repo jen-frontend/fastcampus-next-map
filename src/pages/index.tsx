@@ -7,6 +7,7 @@ import StoreBox from "@/components/StoreBox";
 import { StoreType } from "@/interface";
 
 import axios from "axios";
+import CurrentLocationButton from "@/components/CurrentLocationButton";
 
 export default function Home({ stores }: { stores: StoreType[] }) {
   return (
@@ -14,6 +15,7 @@ export default function Home({ stores }: { stores: StoreType[] }) {
       <Map />
       <Markers stores={stores} />
       <StoreBox />
+      <CurrentLocationButton />
     </>
   );
 }
