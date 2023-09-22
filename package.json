@@ -36,6 +36,7 @@
     "typescript": "5.2.2"
   },
   "devDependencies": {
+    "@types/gtag.js": "^0.0.14",
     "prisma": "^5.2.0",
     "ts-node": "^10.9.1"
   }
